@@ -1,0 +1,44 @@
+{
+  "name": "kata-node-starter",
+  "version": "1.0.0",
+  "description": "A starter project for coding kata in Node.js",
+  "engines": {
+    "node": "8.x",
+    "npm": "6.x"
+  },
+  "scripts": {
+    "test": "mocha",
+    "test:watch": "mocha --watch --watch-extensions js ./test ./app",
+    "coverage": "nyc --reporter=text --reporter=lcov npm test",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smicaliz/kata-node-starter.git"
+  },
+  "keywords": [
+    "kata",
+    "nodejs",
+    "starter-project"
+  ],
+  "author": "Sandro Micalizzi <hello@sandromicalizzi.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smicaliz/kata-node-starter/issues"
+  },
+  "homepage": "https://github.com/smicaliz/kata-node-starter#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "mocha": "^5.1.1",
+    "nyc": "^11.8.0",
+    "prettier": "^1.13.0",
+    "sinon": "^5.0.7"
+  }
+}

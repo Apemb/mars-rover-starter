@@ -34,21 +34,9 @@ public class CLI {
                 .desc("provide an array of commands for the rover to execute")
                 .longOpt("commands")
                 .hasArgs()
-                .type(char[].class)
+                .type(String[].class)
                 .required(true)
                 .build();
-
-        /*
-        Rover initialization:
-        --positionX, -x  initial X landing rover position           [required]
-        --positionY, -y  initial Y landing rover position           [required]
-        --direction, -d  initial landing rover direction            [required]
-
-        Rover commands:
-        --commands, -c  provide an array of commands for the rover to execute [array]
-
-        */
-
 
         final Options options = new Options();
 
@@ -61,7 +49,9 @@ public class CLI {
     }
 
     public static void main(String[] args) {
-        System.out.println("~~~~~ ROVER INITIALIZATION ~~~~~\n");
+        Console console = new Console();
+
+        console.print("~~~~~ ROVER INITIALIZATION ~~~~~\n");
 
         final Options options = configParameters();
 
@@ -72,26 +62,25 @@ public class CLI {
             final CommandLine line;
             line = parser.parse(options, args);
 
-            HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("initialization of rover", options);
-
             int positionX = Integer.parseInt(line.getOptionValue("x"));
             int positionY = Integer.parseInt(line.getOptionValue("y"));
             char direction = line.getOptionValue("d").charAt(0);
-            //char[] commands = line.getOptionValue("c").toCharArray();
+            String[] commands = line.getOptionValues("c");
 
-            Rover rover = new Rover(new Position(positionX, positionY, direction), new Console());
-            rover.run(line.getOptionValues("c"));
+            Position initialPosition = new Position(positionX, positionY, direction);
+
+            Rover rover = new Rover(initialPosition, console);
+
+            rover.run(commands);
 
         } catch (ParseException e) {
 
-            System.out.println(e.getMessage() + "\n");
+            console.print(e.getMessage() + "\n");
 
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("java -jar target/rover-1.0-jar-with-dependencies.jar", options);
-
         }
 
-        System.out.println("\n~~~~~ ROVER TERMINATED ~~~~~\n");
+        console.print("~~~~~ ROVER TERMINATED ~~~~~\n");
     }
 }

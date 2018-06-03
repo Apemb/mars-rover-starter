@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Rover {
 
+    static int SPEED = 2000;
+
     private final Console console;
     private Position position;
 
@@ -42,69 +44,71 @@ public class Rover {
             stringBuilder.append("|\n");
         }
 
-        stringBuilder.append(" +---------------------+");
+        stringBuilder.append(" +---------------------+\n");
         return stringBuilder.toString();
     }
 
     public void run(String[] commands) {
 
+        this.console.print("Initial Position");
         this.console.print(this.display());
 
         for (String command : commands) {
 
+            this.console.print("Move: " + command);
             if (Objects.equals(command, "f")) {
                 if (this.position.direction == 'N') {
 
                     this.position.y -= 1;
-                    if(this.position.y < 0) {
+                    if (this.position.y < 0) {
                         this.position.y += 10;
                     }
 
                 } else if (this.position.direction == 'W') {
                     this.position.x -= 1;
-                    if(this.position.x < 0) {
+                    if (this.position.x < 0) {
                         this.position.x += 10;
                     }
                 } else if (this.position.direction == 'E') {
                     this.position.x += 1;
-                    if(this.position.x >= 10) {
+                    if (this.position.x >= 10) {
                         this.position.x -= 10;
                     }
                 } else if (this.position.direction == 'S') {
                     this.position.y += 1;
-                    if(this.position.y >= 10) {
+                    if (this.position.y >= 10) {
                         this.position.y -= 10;
                     }
                 }
-            } else if(Objects.equals(command, "b")) {
+            } else if (Objects.equals(command, "b")) {
 
                 if (this.position.direction == 'N') {
                     this.position.y += 1;
-                    if(this.position.y >= 10) {
+                    if (this.position.y >= 10) {
                         this.position.y -= 10;
                     }
                 } else if (this.position.direction == 'W') {
 
                     this.position.x += 1;
-                    if(this.position.x >= 10) {
+                    if (this.position.x >= 10) {
                         this.position.x -= 10;
                     }
 
                 } else if (this.position.direction == 'E') {
 
                     this.position.x -= 1;
-                    if(this.position.x < 0) {
+                    if (this.position.x < 0) {
                         this.position.x += 10;
                     }
 
                 } else if (this.position.direction == 'S') {
                     this.position.y -= 1;
-                    if(this.position.y < 0) {
+                    if (this.position.y < 0) {
                         this.position.y += 10;
                     }
                 }
 
-            } else if(Objects.equals(command, "r")) {
+            } else if (Objects.equals(command, "r")) {
                 if (this.position.direction == 'N') {
                     this.position.direction = 'E';
                 } else if (this.position.direction == 'W') {
@@ -114,7 +118,7 @@ public class Rover {
                 } else if (this.position.direction == 'S') {
                     this.position.direction = 'W';
                 }
-            }  else if(Objects.equals(command, "l")) {
+            } else if (Objects.equals(command, "l")) {
                 if (this.position.direction == 'N') {
                     this.position.direction = 'W';
                 } else if (this.position.direction == 'W') {
@@ -124,6 +128,12 @@ public class Rover {
                 } else if (this.position.direction == 'S') {
                     this.position.direction = 'E';
                 }
+            }
+
+            try {
+                Thread.sleep(SPEED);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
             this.console.print(this.display());

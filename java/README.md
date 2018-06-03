@@ -38,6 +38,6 @@ nvm pacakge
 
 Then to launch it, you can type the command:
 ```shell
-java -jar target/rover-1.0.jar
+java -jar target/rover-1.0-jar-with-dependencies.jar
 ```
 

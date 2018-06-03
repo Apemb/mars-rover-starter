@@ -14,7 +14,7 @@ The Mars Rover implementation in Java.
 Before starting to code, don't forget to install all dependencies. Go to the root directory  and run:
 
 ```shell
-nvm install
+mvn install
 ```
 
 ### Writing code
@@ -26,14 +26,14 @@ When you'll write some code, you must place source code files in the main packag
 Run all tests once:
 
 ```shell
-nvm test
+mvn test
 ```
 
 ## Run the programm
 
 To run the program, you must first generate the .jar package with the following command: 
 ```shell
-nvm pacakge
+mvn package
 ``` 
 
 Then to launch it, you can type the command:

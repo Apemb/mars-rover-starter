@@ -1,3 +1,5 @@
+package com.rover;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InOrder;
@@ -13,7 +15,7 @@ public class RoverTest {
 
     @Before
     public void setUp() throws Exception {
-        this.console = Mockito.mock(Console.class);
+        this.console = mock(Console.class);
     }
 
     @Test

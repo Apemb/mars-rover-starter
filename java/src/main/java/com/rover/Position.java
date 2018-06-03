@@ -1,3 +1,5 @@
+package com.rover;
+
 public class Position {
 
     char direction;

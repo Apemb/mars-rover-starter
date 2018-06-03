@@ -1,4 +1,4 @@
-Console.class
-Position.class
-Rover.class
-CLI.class
+com/rover/Console.class
+com/rover/Rover.class
+com/rover/Position.class
+com/rover/CLI.class

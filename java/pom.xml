@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>kata-rover</groupId>
-    <artifactId>kata-rover</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.com.rover</groupId>
+    <artifactId>com.rover</artifactId>
+    <version>1.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,7 +65,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.megacorp.ecs.CLI</mainClass>
+                            <mainClass>com.com.rover.CLI</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

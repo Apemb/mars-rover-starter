@@ -1,5 +1,7 @@
 package com.rover;
 
+import java.util.Objects;
+
 public class Rover {
 
     private final Console console;
@@ -50,7 +52,7 @@ public class Rover {
 
         for (String command : commands) {
 
-            if (command == "f") {
+            if (Objects.equals(command, "f")) {
                 if (this.position.direction == 'N') {
 
                     this.position.y -= 1;
@@ -74,7 +76,7 @@ public class Rover {
                         this.position.y -= 10;
                     }
                 }
-            } else if(command == "b") {
+            } else if(Objects.equals(command, "b")) {
 
                 if (this.position.direction == 'N') {
                     this.position.y += 1;
@@ -102,7 +104,7 @@ public class Rover {
                     }
                 }
 
-            } else if(command == "r") {
+            } else if(Objects.equals(command, "r")) {
                 if (this.position.direction == 'N') {
                     this.position.direction = 'E';
                 } else if (this.position.direction == 'W') {
@@ -112,7 +114,7 @@ public class Rover {
                 } else if (this.position.direction == 'S') {
                     this.position.direction = 'W';
                 }
-            }  else if(command == "l") {
+            }  else if(Objects.equals(command, "l")) {
                 if (this.position.direction == 'N') {
                     this.position.direction = 'W';
                 } else if (this.position.direction == 'W') {

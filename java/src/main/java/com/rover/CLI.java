@@ -34,7 +34,7 @@ public class CLI {
                 .desc("provide an array of commands for the rover to execute")
                 .longOpt("commands")
                 .hasArgs()
-                .type(String[].class)
+                .type(char[].class)
                 .required(true)
                 .build();
 
@@ -74,6 +74,14 @@ public class CLI {
 
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("initialization of rover", options);
+
+            int positionX = Integer.parseInt(line.getOptionValue("x"));
+            int positionY = Integer.parseInt(line.getOptionValue("y"));
+            char direction = line.getOptionValue("d").charAt(0);
+            //char[] commands = line.getOptionValue("c").toCharArray();
+
+            Rover rover = new Rover(new Position(positionX, positionY, direction), new Console());
+            rover.run(line.getOptionValues("c"));
 
         } catch (ParseException e) {
 

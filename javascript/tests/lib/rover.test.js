@@ -951,7 +951,7 @@ describe('Unit | Class | Rover', () => {
 
     describe('running multiple commands', () => {
 
-      it('should dispaly the rover exectuting mutiple commands', () => {
+      it('should dispaly the rover exectuting mutiple commands', async () => {
         // Given
         const expectedSecondCall = [
           '   0 1 2 3 4 5 6 7 8 9\n' +
@@ -973,7 +973,7 @@ describe('Unit | Class | Rover', () => {
         console.log.reset();
 
         // When
-        rover.run(['f', 'l', 'f', 'f']);
+        await rover.run(['f', 'l', 'f', 'f']);
 
         // Then
         expect(console.log.callCount).to.deep.equal(8);

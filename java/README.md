@@ -37,7 +37,10 @@ mvn package
 ``` 
 
 Then to launch it, you can type the command:
+
 ```shell
-java -jar target/rover-1.0-jar-with-dependencies.jar
+java -jar target/rover-1.0-jar-with-dependencies.jar -x 1 -y 2 -d N -c f l
 ```
+(here with a start at x: 1, y: 2, direction: North, commands: forward then left)
+
 

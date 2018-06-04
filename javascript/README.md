@@ -35,6 +35,15 @@ Automatically re-run all tests once whenever you change (save) a file:
 npm run test:watch
 ```
 
+### Run CLI Rover
+
+To run the project: 
+
+```shell
+npm start -- -x 1 -y 2 -d N -c f l
+```
+(here with a start at x:1, y:2, direction:North, commands: forward then left)
+
 ## Node version
 
 By default, this project uses the last LTS version of Node.js (8.x) and the last version of NPM (6.x).

@@ -1,10 +1,16 @@
 const { expect, sinon } = require('../test-helper');
 
 const Rover = require('../../lib/rover');
+const PositionModule = require('../../lib/position-modules/position-module');
+const Direction = require('../../lib/position-modules/direction');
+const MapModule = require('../../lib/map-modules/map-module');
 
 describe('Unit | Class | Rover', () => {
 
   const console = { log: () => undefined };
+  const positionModule = new PositionModule();
+  const mapModule = new MapModule();
+  const roverParts = { positionModule, mapModule };
   const dependencies = { console };
 
   beforeEach(() => {
@@ -33,10 +39,10 @@ describe('Unit | Class | Rover', () => {
         '9|                     |\n' +
         ' +---------------------+\n',
       ];
-      const initialPosition = { x: 1, y: 1, d: 'N' };
+      const initialPosition = { x: 1, y: 1, d: Direction.NORTH };
 
       // When
-      new Rover(initialPosition, dependencies);
+      new Rover(initialPosition, roverParts, dependencies);
 
       // Then
       expect(console.log).to.have.been.calledTwice;
@@ -64,10 +70,10 @@ describe('Unit | Class | Rover', () => {
         '9|                     |\n' +
         ' +---------------------+\n',
       ];
-      const initialPosition = { x: 3, y: 4, d: 'N' };
+      const initialPosition = { x: 3, y: 4, d: Direction.NORTH };
 
       // When
-      new Rover(initialPosition, dependencies);
+      new Rover(initialPosition, roverParts, dependencies);
 
       // Then
       expect(console.log).to.have.been.calledTwice;
@@ -95,10 +101,10 @@ describe('Unit | Class | Rover', () => {
         '9|                     |\n' +
         ' +---------------------+\n',
       ];
-      const initialPosition = { x: 7, y: 0, d: 'W' };
+      const initialPosition = { x: 7, y: 0, d: Direction.WEST };
 
       // When
-      new Rover(initialPosition, dependencies);
+      new Rover(initialPosition, roverParts, dependencies);
 
       // Then
       expect(console.log).to.have.been.calledTwice;
@@ -132,8 +138,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'N' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.NORTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -166,8 +172,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'E' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.EST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -200,8 +206,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'S' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.SOUTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -234,8 +240,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'W' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.WEST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -271,8 +277,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'N' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.NORTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -305,8 +311,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'E' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.EST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -339,8 +345,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'S' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.SOUTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -373,8 +379,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'W' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.WEST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -410,8 +416,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'N' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.NORTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -444,8 +450,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'E' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.EST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -478,8 +484,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'S' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.SOUTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -512,8 +518,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'W' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.WEST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -549,8 +555,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'N' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.NORTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -583,8 +589,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'E' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.EST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -617,8 +623,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'S' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.SOUTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -651,8 +657,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'W' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.WEST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -688,8 +694,8 @@ describe('Unit | Class | Rover', () => {
           '9|   ^                 |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 0, d: 'N' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 0, d: Direction.NORTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -722,8 +728,8 @@ describe('Unit | Class | Rover', () => {
           '9|   v                 |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 0, d: 'S' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 0, d: Direction.SOUTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -759,8 +765,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 9, d: 'S' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 9, d: Direction.SOUTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -793,8 +799,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 9, d: 'N' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 9, d: Direction.NORTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -830,8 +836,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 0, y: 1, d: 'W' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 0, y: 1, d: Direction.WEST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -864,8 +870,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 0, y: 1, d: 'E' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 0, y: 1, d: Direction.EST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -901,8 +907,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 9, y: 1, d: 'E' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 9, y: 1, d: Direction.EST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -935,8 +941,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 9, y: 1, d: 'W' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 9, y: 1, d: Direction.WEST };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When
@@ -968,8 +974,8 @@ describe('Unit | Class | Rover', () => {
           '9|                     |\n' +
           ' +---------------------+\n',
         ];
-        const initialPosition = { x: 1, y: 1, d: 'S' };
-        const rover = new Rover(initialPosition, dependencies);
+        const initialPosition = { x: 1, y: 1, d: Direction.SOUTH };
+        const rover = new Rover(initialPosition, roverParts, dependencies);
         console.log.reset();
 
         // When

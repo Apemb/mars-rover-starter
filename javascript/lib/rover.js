@@ -12,11 +12,14 @@ function moving() {
 
 class Rover {
 
-  constructor(initialPosition, dependencies) {
+  constructor(initialPosition, roverParts, dependencies) {
     this.position = initialPosition;
+    this.mapModule = roverParts.mapModule;
+    this.positionModule = roverParts.positionModule;
     this.console = dependencies.console;
 
     this.console.log('Initial Position');
+    this.positionModule.setInitialPosition(initialPosition);
     this.displayPosition();
   }
 
@@ -26,7 +29,7 @@ class Rover {
       const command = commands[index];
       await this.execute(command);
     }
-    return Promise.resolve()
+    return Promise.resolve();
   }
 
   async execute(command) {
@@ -34,16 +37,16 @@ class Rover {
 
     switch (command) {
       case 'f':
-        this.moveForward();
+        this.positionModule.moveForward();
         break;
       case 'b':
-        this.moveBackward();
+        this.positionModule.moveBackward();
         break;
       case 'r':
-        this.turnRight();
+        this.positionModule.turnRight();
         break;
       case 'l':
-        this.turnLeft();
+        this.positionModule.turnLeft();
         break;
     }
 
@@ -52,112 +55,9 @@ class Rover {
     await moving();
   }
 
-  moveForward() {
-    switch (this.position.d) {
-      case 'N':
-        this.position.y = positiveModulo10(this.position.y - 1);
-        break;
-      case 'E':
-        this.position.x = positiveModulo10(this.position.x + 1);
-        break;
-      case 'S':
-        this.position.y = positiveModulo10(this.position.y + 1);
-        break;
-      case 'W':
-        this.position.x = positiveModulo10(this.position.x - 1);
-        break;
-    }
-  }
-
-  moveBackward() {
-    switch (this.position.d) {
-      case 'N':
-        this.position.y = positiveModulo10(this.position.y + 1);
-        break;
-      case 'E':
-        this.position.x = positiveModulo10(this.position.x - 1);
-        break;
-      case 'S':
-        this.position.y = positiveModulo10(this.position.y - 1);
-        break;
-      case 'W':
-        this.position.x = positiveModulo10(this.position.x + 1);
-        break;
-    }
-  }
-
-  turnRight() {
-    switch (this.position.d) {
-      case 'N':
-        this.position.d = 'E';
-        break;
-      case 'E':
-        this.position.d = 'S';
-        break;
-      case 'S':
-        this.position.d = 'W';
-        break;
-      case 'W':
-        this.position.d = 'N';
-        break;
-    }
-  }
-
-  turnLeft() {
-    switch (this.position.d) {
-      case 'N':
-        this.position.d = 'W';
-        break;
-      case 'E':
-        this.position.d = 'N';
-        break;
-      case 'S':
-        this.position.d = 'E';
-        break;
-      case 'W':
-        this.position.d = 'S';
-        break;
-    }
-  }
-
   displayPosition() {
 
-    let roverChar = ' ';
-    switch (this.position.d) {
-      case 'N':
-        roverChar = '^';
-        break;
-      case 'E':
-        roverChar = '>';
-        break;
-      case 'S':
-        roverChar = 'v';
-        break;
-      case 'W':
-        roverChar = '<';
-        break;
-    }
-
-    const mapTemplate = '' +
-      '   0 1 2 3 4 5 6 7 8 9\n' +
-      ' +---------------------+\n' +
-      '0|                     |\n' +
-      '1|                     |\n' +
-      '2|                     |\n' +
-      '3|                     |\n' +
-      '4|                     |\n' +
-      '5|                     |\n' +
-      '6|                     |\n' +
-      '7|                     |\n' +
-      '8|                     |\n' +
-      '9|                     |\n' +
-      ' +---------------------+\n';
-
-    const mapBuilderArray = mapTemplate.split('');
-    const index = (this.position.x + 1) * 2 +
-      25 * (this.position.y + 2) - 1;
-    mapBuilderArray[index] = roverChar;
-    const map = mapBuilderArray.join('');
+    const map = this.mapModule.generateMap(this.positionModule.currentPosition);
 
     this.console.log(map);
   }

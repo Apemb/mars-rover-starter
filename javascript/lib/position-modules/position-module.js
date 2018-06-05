@@ -5,8 +5,11 @@ function positiveModulo10(number) {
 }
 
 class PositionModule {
-  constructor({ initialPosition }) {
-    this.currentPosition = initialPosition;
+  constructor() {
+  }
+
+  setInitialPosition(position) {
+    this.currentPosition = position;
   }
 
   moveForward() {

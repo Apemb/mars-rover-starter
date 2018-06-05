@@ -6,16 +6,14 @@ const PositionModule = require('../../../lib/position-modules/position-module');
 
 describe('Unit | Class | PositionModules | Position Module', () => {
 
-  beforeEach(() => {
-  });
-
   describe('#moveForward', () => {
 
     it('should update the rover position accordingly when direction is North', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.NORTH });
       const expectedPosition = new Position({ x: 1, y: 0, d: Direction.NORTH });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.moveForward();
@@ -30,7 +28,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.EST });
       const expectedPosition = new Position({ x: 2, y: 1, d: Direction.EST });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.moveForward();
@@ -45,7 +44,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.SOUTH });
       const expectedPosition = new Position({ x: 1, y: 2, d: Direction.SOUTH });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.moveForward();
@@ -60,7 +60,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.WEST });
       const expectedPosition = new Position({ x: 0, y: 1, d: Direction.WEST });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.moveForward();
@@ -78,7 +79,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.NORTH });
       const expectedPosition = new Position({ x: 1, y: 2, d: Direction.NORTH });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.moveBackward();
@@ -93,7 +95,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.EST });
       const expectedPosition = new Position({ x: 0, y: 1, d: Direction.EST });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.moveBackward();
@@ -108,7 +111,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.SOUTH });
       const expectedPosition = new Position({ x: 1, y: 0, d: Direction.SOUTH });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.moveBackward();
@@ -123,7 +127,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.WEST });
       const expectedPosition = new Position({ x: 2, y: 1, d: Direction.WEST });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.moveBackward();
@@ -141,7 +146,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.NORTH });
       const expectedPosition = new Position({ x: 1, y: 1, d: Direction.EST });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.turnRight();
@@ -156,7 +162,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.EST });
       const expectedPosition = new Position({ x: 1, y: 1, d: Direction.SOUTH });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.turnRight();
@@ -171,7 +178,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.SOUTH });
       const expectedPosition = new Position({ x: 1, y: 1, d: Direction.WEST });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.turnRight();
@@ -186,7 +194,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.WEST });
       const expectedPosition = new Position({ x: 1, y: 1, d: Direction.NORTH });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.turnRight();
@@ -204,7 +213,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.NORTH });
       const expectedPosition = new Position({ x: 1, y: 1, d: Direction.WEST });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.turnLeft();
@@ -219,7 +229,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.EST });
       const expectedPosition = new Position({ x: 1, y: 1, d: Direction.NORTH });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.turnLeft();
@@ -234,7 +245,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.SOUTH });
       const expectedPosition = new Position({ x: 1, y: 1, d: Direction.EST });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.turnLeft();
@@ -249,7 +261,8 @@ describe('Unit | Class | PositionModules | Position Module', () => {
       // Given
       const initialPosition = new Position({ x: 1, y: 1, d: Direction.WEST });
       const expectedPosition = new Position({ x: 1, y: 1, d: Direction.SOUTH });
-      const positionModule = new PositionModule({ initialPosition });
+      const positionModule = new PositionModule();
+      positionModule.setInitialPosition(initialPosition);
 
       // When
       positionModule.turnLeft();
